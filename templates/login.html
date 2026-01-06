@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IONIC BOOST - Login/Register</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family:'Roboto',sans-serif;
+      background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
+      url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+      background-size:cover;background-position:center;
+      height:100vh;display:flex;justify-content:center;align-items:center;
+    }
+    
+    .container{
+      background:#fff;
+      padding:30px;
+      border-radius:12px;
+      width:100%;
+      max-width:500px;
+      max-height:90vh;
+      overflow-y:auto;
+      box-shadow:0 15px 35px rgba(0,0,0,0.2);
+    }
+    
+    h1{text-align:center;color:#e74c3c;font-family:'Montserrat';margin-bottom:20px;}
+    
+    .form-group{margin-bottom:15px;}
+    .form-group label{display:block;margin-bottom:6px;font-weight:500;color:#2c3e50;}
+    
+    .form-group input,.form-group textarea{
+      width:100%;padding:12px;border:1px solid #ddd;border-radius:8px;
+      font-size:1rem;font-family:'Roboto',sans-serif;
+    }
+    
+    .form-group input:focus,.form-group textarea:focus{border-color:#e74c3c;outline:none;}
+    
+    .btn{
+      width:100%;padding:14px;border:none;border-radius:8px;
+      font-weight:bold;font-size:1.05rem;color:#fff;
+      background:linear-gradient(to right,#e74c3c,#c0392b);
+      cursor:pointer;transition:.3s;box-shadow:0 4px 12px rgba(231,76,60,0.4);
+      margin-top:10px;
+    }
+    .btn:hover{transform:translateY(-2px);}
+    
+    .toggle-link{text-align:center;margin-top:15px;}
+    .toggle-link a{color:#e74c3c;text-decoration:none;font-weight:500;cursor:pointer;}
+    
+    .hidden{display:none;}
+    
+    /* Scrollbar styling */
+    .container::-webkit-scrollbar {width:8px;}
+    .container::-webkit-scrollbar-track {background:#f1f1f1;border-radius:10px;}
+    .container::-webkit-scrollbar-thumb {background:#e74c3c;border-radius:10px;}
+    .container::-webkit-scrollbar-thumb:hover {background:#c0392b;}
+    
+    .g-recaptcha{margin-top:10px;display:flex;justify-content:center;}
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+        <p class="{% if category=='danger' %}text-red{% elif category=='success' %}text-green{% else %}text-black{% endif %}">
+          {{ message }}
+        </p>
+        
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <!-- Login Form -->
+    <div id="loginForm">
+      <h1>Login</h1>
+      <form method="POST" action="{{ url_for('login') }}">
+        <div class="form-group">
+          <label for="loginUser">WhatsApp Number / Email</label>
+          <input type="text" name="whatsapp" placeholder="Enter WhatsApp or Email" required>
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" name="password" placeholder="Enter your password" required>
+        </div>
+
+        <div class="g-recaptcha" data-sitekey="6LcqHQUsAAAAAKMhMRBuEi0oY8ullS2YsoPIygKZ"></div>
+
+        <button class="btn" type="submit"><i class="fas fa-sign-in-alt"></i> Login</button>
+      </form>
+      <div class="toggle-link">
+        <p>Don't have an account? <a onclick="showRegister()">Register</a></p>
+      </div>
+    </div>
+
+    <!-- Register Form -->
+    <div id="registerForm" class="hidden">
+      <h1>Register</h1>
+      <form method="POST" action="{{ url_for('register') }}">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" name="name" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+          <label for="whatsapp">WhatsApp Number</label>
+          <input type="tel" name="whatsapp" placeholder="Enter WhatsApp number" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <textarea name="address" placeholder="Enter your address" required rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" name="city" placeholder="Enter your city" required>
+        </div>
+        <div class="form-group">
+          <label for="state">State</label>
+          <input type="text" name="state" placeholder="Enter your state" required>
+        </div>
+        <div class="form-group">
+          <label for="pincode">Pincode</label>
+          <input type="text" id="pincode" name="pincode" placeholder="Enter your pincode" required pattern="[0-9]{6}" maxlength="6">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" placeholder="Enter password" required>
+        </div>
+        <div class="form-group">
+          <label for="confirm_password">Confirm Password</label>
+          <input type="password" name="confirm_password" placeholder="Retype password" required>
+        </div>
+
+        <div class="g-recaptcha" data-sitekey="6LdYS7MrAAAAACmvOoiWHLqEpNJU_pv8wKr7o-l7"></div>
+
+        <button class="btn" type="submit"><i class="fas fa-user-plus"></i> Register</button>
+      </form>
+      <div class="toggle-link">
+        <p>Already have an account? <a onclick="showLogin()">Login</a></p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function showRegister(){
+      document.getElementById('loginForm').classList.add('hidden');
+      document.getElementById('registerForm').classList.remove('hidden');
+    }
+    function showLogin(){
+      document.getElementById('registerForm').classList.add('hidden');
+      document.getElementById('loginForm').classList.remove('hidden');
+    }
+  </script>
+
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms and Conditions | Ionic Boost</title>
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+
+</head>
+<body>
+    {% include 'header.html' %}
+
+  <section class="terms-content">
+    <div class="container">
+      
+      <!-- Terms and Conditions -->
+      <div class="terms-section">
+        <h2>Terms and Conditions</h2>
+        
+        <h3>1. General</h3>
+        <p>By using the website www.ionicboost.org and purchasing products from TIPL, you agree to these Terms and Conditions. These terms are a legally binding agreement between you, the customer, and Terion Innovix Private Limited (TIPL).</p>
+
+        <h3>2. Product and Pricing</h3>
+        <p>TIPL offers the Ionic Boost 20ml pack for sale exclusively through its webstore. The price of a single pack is Rs. {{price}}/-, inclusive of all taxes. Only one pack can be ordered at a time. The final price displayed at checkout is the price you pay. TIPL reserves the right to change the price without prior notice.</p>
+
+        <h3>3. Order and Delivery</h3>
+        <p>Orders can be placed via UPI payment. A single transaction is limited to one Ionic Boost 20ml pack. Delivery is free for all valid Indian pin codes. TIPL guarantees only the dispatch date; final delivery depends on the delivery partner's terms.</p>
+
+        <h3>4. Limited Warranty and Replacement</h3>
+        <p>Replacement is offered only for damaged or defective products. Customers must provide unboxing video evidence with date and time enabled. Once verified, TIPL dispatches a replacement within 48 hours at no extra cost.</p>
+
+        <h3>5. Disputes and Customer Service</h3>
+        <p>Issues like delayed delivery, damaged packaging, or lost packages will be resolved as per delivery partner policies, but TIPL will protect customer interests.</p>
+
+        <h3>6. Intellectual Property</h3>
+        <p>All content on www.ionicboost.org is TIPL’s intellectual property. Unauthorized use is prohibited without written consent.</p>
+
+        <h3>7. Jurisdiction</h3>
+        <p>All disputes shall fall under the jurisdiction of courts in Theni, Tamil Nadu, India.</p>
+
+        <h3>8. Legal & Compliance</h3>
+        <ul>
+          <li>Our services comply with Indian laws on fuel additives, digital services, and IT security.</li>
+          <li>Users must be at least 18 years old.</li>
+          <li>Uploading defamatory, illegal, or offensive content is prohibited.</li>
+        </ul>
+      </div>
+
+  
+
+     
+    </div>
+  </section>
+      {% include 'footer.html' %}
+
+</body>
+</html>

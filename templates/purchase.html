@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ionic Boost - Product Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      /* --- Page / layout --- */
+      b
+  /* --- Page / layout --- */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f8fa;
+    margin: 0;
+    padding: 0px;
+    color: #222;
+    line-height: 1.6;
+  }
+
+  /* Header styling */
+  .header {
+    background: linear-gradient(135deg, #0066cc, #00bfa5);
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo i {
+    margin-right: 10px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 20px;
+  }
+
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    color: #e1f5fe;
+    transform: translateY(-2px);
+  }
+
+  /* Main heading */
+  h2 {
+    margin: 30px 0 20px 0;
+    font-size: 32px;
+    color: #0066cc;
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #00bfa5;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+
+  h2:after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: #e63946;
+    border-radius: 2px;
+  }
+
+  /* Page layout */
+  .page {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: start;
+    padding: 0 20px;
+  }
+
+  /* Box styling */
+  .box {
+    border: 1px solid #ddd;
+    padding: 20px;
+    background: #fff;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  /* Summary/details styling */
+  details {
+    margin-bottom: 20px;
+  }
+
+  summary {
+    font-weight: bold;
+    color: #0066cc;
+    font-size: 20px;
+    padding: 10px 0;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    align-items: center;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary:after {
+    content: '+';
+    margin-left: auto;
+    font-size: 24px;
+    transition: transform 0.3s ease;
+  }
+
+  details[open] summary:after {
+    content: '-';
+    transform: rotate(0deg);
+  }
+
+  /* --- Left area: thumbnails + main image --- */
+  .product-section {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    background: transparent;
+    padding: 0;
+  }
+
+  /* Thumbnails */
+  .thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .thumbnails img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    display: block;
+  }
+
+  .thumbnails img.active,
+  .thumbnails img:hover {
+    border-color: #007bff;
+    transform: scale(1.05);
+  }
+
+  /* Main Image container with cursor-follow zoom */
+  .main-image-container {
+    width: 420px;
+    height: 520px;
+    overflow: hidden;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    background: #fff;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  .main-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.18s ease;
+    transform-origin: center center;
+    pointer-events: none;
+    -webkit-user-drag: none;
+    user-drag: none;
+    user-select: none;
+  }
+
+  /* --- Right column content --- */
+  .right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+  }
+
+  .right-column .box {
+    flex: 0 0 auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .product-details h3 {
+    margin: 0 0 15px 0;
+    color: #0066cc;
+    font-size: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed #ccc;
+  }
+
+  /* Price table */
+  .price-table p {
+    margin: 8px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .price-table .total {
+    font-size: 20px;
+    font-weight: bold;
+    color: #e63946;
+    border-top: 2px solid #ddd;
+    padding-top: 8px;
+    margin-top: 15px;
+  }
+
+  .price-table p:not(:last-child) {
+    border-bottom: 1px dotted #eee;
+    padding-bottom: 8px;
+  }
+
+  .highlight {
+    font-weight: bold;
+    color: #e63946;
+    background: #fff5f5;
+    padding: 5px;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 5px 0;
+  }
+
+  /* ✅ Unified Button Container */
+  .btn-container {
+    display: flex;
+    flex-direction: column;   /* stack image & button */
+    align-items: center;      /* center them */
+    gap: 10px;
+    margin-top: 15px;
+    width: 100%;              /* fit card width */
+  }
+
+  .btn-container img {
+    max-width: 120px;
+    height: auto;
+  }
+
+  .btn {
+    background: linear-gradient(135deg, #00bfa5, #00897b);
+    color: #fff;
+    display: inline-block;
+    width: 100%;              /* full width */
+    max-width: 220px;         /* prevent oversized button */
+    padding: 14px 28px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-align: center;
+    font-size: 18px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background: linear-gradient(135deg, #00897b, #007766);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+  }
+
+  .price {
+    font-size: 24px;
+    color: #e63946;
+    margin: 15px 0;
+    font-weight: bold;
+    text-align: center;
+    background: #fff5f5;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px dashed #e63946;
+  }
+
+  /* Product Basics styling */
+  .product-basics p {
+    padding: 8px 0;
+    margin: 0;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .product-basics p:last-child {
+    border-bottom: none;
+  }
+
+  .product-basics p span:first-child {
+    font-weight: bold;
+    color: #555;
+  }
+
+  /* Reports section */
+  .report-gallery {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px 0;
+  }
+
+  .report-gallery img {
+    width: 200px;
+    height: auto;
+    cursor: pointer;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    transition: transform 0.2s;
+  }
+
+  .report-gallery img:hover {
+    transform: scale(1.05);
+  }
+
+  .report-thumbnails {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .report-thumbnails img {
+    width: 120px;
+    cursor: pointer;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    transition: 0.3s;
+  }
+
+  .report-thumbnails img:hover {
+    border-color: #e63946;
+    transform: scale(1.05);
+  }
+
+  .reports a {
+    display: block;
+    padding: 12px 15px;
+    margin: 8px 0;
+    background: #f0f7ff;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #0066cc;
+    transition: all 0.2s ease;
+    border: 1px solid #ddefff;
+    font-weight: 500;
+  }
+
+  .reports a:hover {
+    background: #e1efff;
+    transform: translateX(5px);
+  }
+
+  .reports a::before {
+    content: "📄 ";
+    margin-right: 8px;
+  }
+
+  /* Delivery section */
+  .delivery-map {
+    text-align: center;
+    padding: 10px;
+  }
+
+  .delivery-map img {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  /* Delivery Info Box */
+  .delivery-info {
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background: #fff;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* Heading with icon */
+  .delivery-info h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #0073e6;
+  }
+
+  .delivery-info h3 i {
+    font-size: 18px;
+    color: #0073e6;
+  }
+
+  /* Paragraph text */
+  /* Default: inline alignment */
+  /* Default: nice inline layout */
+  .delivery-info p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0;
+    line-height: 1.4;
+    flex-wrap: wrap;
+  }
+
+  .delivery-info p i {
+    color: #0073e6;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  /* Mobile Fix: stack icon + text properly */
+  @media (max-width: 430px) {
+    .delivery-info p {
+      display: block;          /* ✅ icon on top, text below */
+    }
+
+    .delivery-info p i {
+      display: inline-block;   /* ✅ keeps icon visible */
+      margin-right: 6px;       /* small spacing before text */
+      margin-bottom: 4px;      /* gap between icon & wrapped text */
+    }
+  }
+
+
+
+  /* Animated Warning Box */
+  .highlight-box {
+    text-align: center;
+    font-weight: bold;
+    padding: 15px;
+    margin: 20px auto;
+    max-width: 90%;
+    font-size: 18px;
+    border-radius: 8px;
+    border: 2px solid #b30000;
+    animation: bgPulse 3s infinite;
+  }
+
+  /* Text inside box */
+  .color-changing {
+    animation: textPulse 3s infinite;
+    color: #ffffff;
+  }
+
+  /* Background animation */
+  @keyframes bgPulse {
+    0%, 100% { background: #ff8080; }
+    50%      { background: #ff4d4d; }
+  }
+
+  /* Modal styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    overflow: auto;
+  }
+
+  .modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .close:hover {
+    color: #e63946;
+  }
+
+  #caption {
+    text-align: center;
+    color: #ccc;
+    margin-top: 10px;
+    font-size: 18px;
+  }
+
+  /* PDF container */
+  #pdf-container {
+    display: none;
+    width: 100%;
+    height: 80vh;
+    margin-top: 15px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  #pdf-frame {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Footer */
+  footer {
+    max-width: 1200px;
+    margin: 30px auto 0 auto;
+    text-align: center;
+    padding: 20px;
+  }
+
+  footer .box {
+    background: #e1f5fe;
+    border-color: #00bfa5;
+    font-weight: bold;
+    font-size: 18px;
+    color: #0066cc;
+    padding: 15px;
+  }
+
+  /* Features section */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+  }
+
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 8px;
+  }
+
+  .feature i {
+    color: #00bfa5;
+    font-size: 24px;
+  }
+
+  .feature-text {
+    font-size: 14px;
+  }
+
+  /* responsive small screens */
+  @media (max-width: 900px) {
+    .page { 
+      grid-template-columns: 1fr; 
+    }
+    
+    .header-container {
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .nav-links {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .product-section {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .thumbnails {
+      flex-direction: row;
+      order: 2;
+      margin-top: 15px;
+    }
+    
+    .main-image-container {
+      width: 100%;
+      height: 400px;
+    }
+
+    .product-basics p {
+      flex-direction: column;
+    }
+
+    .delivery-map img {
+      min-height: 300px;
+    }
+
+    .features {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Animation for elements */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animated {
+    animation: fadeIn 0.6s ease forwards;
+  }
+
+  .delay-1 { animation-delay: 0.2s; }
+  .delay-2 { animation-delay: 0.4s; }
+  .delay-3 { animation-delay: 0.6s; }
+
+    </style>
+  </head>
+  <body>
+  {% include 'header.html' %}
+
+    <h2>Ionic Boost 20ml Pack</h2>
+
+    <div class="page">
+      <!-- LEFT COLUMN -->
+      <div>
+        <!-- product images block -->
+        <div class="box animated">
+          <p style="font-weight: bold; color: #0066cc; margin-top: 0;">Product Images</p>
+
+          <div class="product-section">
+            <!-- thumbnails -->
+            <div class="thumbnails">
+              <img src="{{ url_for('static', filename='img/web-page001.png') }}" 
+                  data-large="{{ url_for('static', filename='img/web-page001.png') }}"
+                  alt="Front thumbnail" class="active">
+              <img src="{{ url_for('static', filename='img/New_20_ml_page002.png' ) }}"
+                  data-large="{{ url_for('static', filename='img/New_20_ml_page002.png') }}"
+                  alt="Back thumbnail">
+              <img src="{{ url_for('static', filename='img/IB_page013.png' ) }}"
+                  data-large="{{ url_for('static', filename='img/IB_page013.png') }}"
+                  alt="Engine life GIF thumbnail">
+            </div>
+            <!-- main image -->
+            <div class="main-image-container" id="imageContainer">
+              <img id="mainImage" src="{{ url_for('static', filename='img/web-page001.png') }}" alt="Ionic Boost main">
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Basics -->
+        <details class="box animated delay-1">
+          <summary><i class="fas fa-info-circle"></i> Product Basics</summary>
+          <div class="product-basics">
+            <p><span>Ionic Boost:</span> <span>20 ML</span></p>
+            <p><span>Packing Material:</span> <span>Blister Pack</span></p>
+            <p><span>Product user guide:</span> <span>Printed on Rear side</span></p>
+            <p><span>Diesel Qty Coverage:</span> <span>900 Ltrs</span></p>
+            <p><span>Material State:</span> <span>Liquid</span></p>
+            <p><span>Colour:</span> <span>Crystal Red</span></p>
+            <p><span>% of Chemical Content:</span> <span>0%</span></p>
+            <p><span>Scientific name:</span> <span>Ionic Liquid Solution</span></p>
+            <p><span>% of ions:</span> <span>100%</span></p>
+          </div>
+        </details>
+        
+        <!-- Features -->
+        
+        <!-- Delivery Information -->
+        <details class="box animated delay-3">
+          <summary><i class="fas fa-truck"></i> Delivery Information</summary>
+          <div class="delivery-map">
+            <p>We deliver to over <strong>20,000 pincodes</strong> across India</p>
+            <img src="{{ url_for('static', filename='img/te.png') }}" alt="Delivery map">
+            <div class="delivery-info">
+              <p><i class="fas fa-shipping-fast"></i> Free shipping all over India</p>
+              <p><i class="fas fa-clock"></i> Usually dispatched in 48 hours on business days</p>
+              <p><i class="fas fa-box"></i> Secure packaging</p>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="right-column">
+        <!-- How to Begin -->
+        <details class="box product-details animated">
+          <summary><i class="fas fa-play-circle"></i> How to Begin Using Ionic Boost</summary>
+          <p><strong><u>First Time Use</u></strong></p>
+          <p>Start Dosing & Filling @ Diesel Drain Level</p>
+          <p><em>Fuel Gauge</em></p>
+          <img src="{{ url_for('static', filename='img/Final_First_time.gif') }}"
+              alt="Fuel Gauge"
+              style="max-width:100%; display:block; margin:15px auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          <p style="font-style: italic; text-align: center; color: #666;">
+            Follow the fuel gauge instructions for optimal results
+          </p>
+        </details>
+
+        <!-- Price / purchase -->
+        <div class="box price-table animated delay-1">
+          <div class="price-table">
+            <p><span>Base Price</span><span id="base-price"></span></p>
+            <p><span>GST (18%)</span><span id="gst-amount"></span></p>
+            <p class="total"><span>Total:</span><span>{{price}}</span></p>
+          </div>
+
+          <div class="btn-container">
+            <img src="{{ url_for('static', filename='img/Shipping free-page015.png') }}"
+                alt="Free Shipping"
+                style="max-width:100px; height:auto;" />
+            <a href="{{ url_for('checkout') }}" class="btn">
+              <i class="fas fa-shopping-cart"></i> Buy Now
+            </a>
+          </div>
+        </div>
+
+        <!-- Reports & Certifications -->
+        <details class="box reports animated delay-2">
+          <summary><i class="fas fa-file-certificate"></i> Reports & Certifications</summary>
+          <div class="reports-section">
+            <!-- Thumbnails -->
+            <div class="report-thumbnails">
+              <img src="static/img/CTAL Report1.png" alt="CTAL Report 1" onclick="openModal(this)">
+              <img src="static/img/CTAL Report2.png" alt="CTAL Report 2" onclick="openModal(this)">
+              <img src="static/img/CTAL Report3.png" alt="CTAL Report 3" onclick="openModal(this)">
+            </div>
+            
+            <a href="javascript:void(0)" onclick="openPDF('/static/certificates/FORD%20Trial%20Report.pdf')">
+              +20% Mileage Report on 'Ford Eco Sport'
+            </a>
+          </div>
+        </details>
+
+        <!-- 100% Result Guarantee -->
+        <details class="box animated delay-3">
+          <summary><i class="fas fa-check-circle"></i> 100% Result Guarantee</summary>
+          <p>✅ Matched with All Brands & Models of Passenger cars.</p>
+          <p>✅ Matched with All Brands of Diesel.</p>
+          <div class="highlight-box">
+            <span class="color-changing">⚠ Make Sure Diesel Filling Range = 5 to 20 Liters.</span><br>
+            <span class="color-changing">⚠ Do Not Overdose.</span><br>
+            <span class="color-changing">⚠ Do not Exceed 12 Drops.</span>
+          </div>
+        </details>
+        
+        <!-- Testimonials -->
+        
+      </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="imgModal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img class="modal-content" id="modalImg">
+      <div id="caption"></div>
+    </div>
+
+    <div id="pdfModal" class="modal">
+      <div class="modal-content" style="background: white; padding: 20px; max-width: 90%; margin: auto;">
+        <span class="close" onclick="closePDF()">&times;</span>
+        <iframe id="pdfViewer" src="" width="100%" height="600px" style="border: 1px solid #ddd; border-radius: 8px;"></iframe>
+      </div>
+    </div>
+
+  {% include 'footer.html' %}
+    <script>
+      // thumbnails -> switch main image
+      const thumbs = document.querySelectorAll('.thumbnails img');
+      const mainImage = document.getElementById('mainImage');
+      const container = document.getElementById('imageContainer');
+      const totalPrice = parseFloat("{{ price }}");
+      const basePrice = totalPrice / 1.18; // 18% GST
+      const gstAmount = totalPrice - basePrice;
+      document.getElementById("base-price").textContent = "₹" + basePrice.toFixed(2);
+      document.getElementById("gst-amount").textContent = "₹" + gstAmount.toFixed(2);
+      document.getElementById("total-price").textContent = "₹" + totalPrice.toFixed(2);
+
+      thumbs.forEach(t => {
+        t.addEventListener('click', () => {
+          thumbs.forEach(x => x.classList.remove('active'));
+          t.classList.add('active');
+          const large = t.getAttribute('data-large') || t.src;
+          mainImage.src = large;
+        });
+      });
+
+      // Cursor-follow zoom (Amazon-like)
+      container.addEventListener('mousemove', (e) => {
+        const rect = container.getBoundingClientRect();
+        const xPct = ((e.clientX - rect.left) / rect.width) * 100;
+        const yPct = ((e.clientY - rect.top) / rect.height) * 100;
+        mainImage.style.transformOrigin = `${xPct}% ${yPct}%`;
+        mainImage.style.transform = 'scale(2)';
+      });
+      
+      container.addEventListener('mouseleave', () => {
+        mainImage.style.transform = 'scale(1)';
+      });
+
+      // Image modal
+      function openModal(imgElement) {
+        const modal = document.getElementById("imgModal");
+        const modalImg = document.getElementById("modalImg");
+        const captionText = document.getElementById("caption");
+
+        modal.style.display = "block";
+        modalImg.src = imgElement.src;
+        captionText.innerHTML = imgElement.alt;
+
+        // Disable right click (basic protection)
+        modalImg.oncontextmenu = () => false;
+      }
+
+      function closeModal() {
+        document.getElementById("imgModal").style.display = "none";
+      }
+
+      // PDF modal
+      function openPDF(filePath) {
+        const modal = document.getElementById("pdfModal");
+        const viewer = document.getElementById("pdfViewer");
+        const encodedPath = filePath.replace(/ /g, "%20");
+        viewer.src = encodedPath + "#toolbar=0&navpanes=0&scrollbar=0";
+        modal.style.display = "block";
+      }
+      
+      function closePDF() {
+        const modal = document.getElementById("pdfModal");
+        const viewer = document.getElementById("pdfViewer");
+        modal.style.display = "none";
+        viewer.src = "";
+      }
+      
+      window.onclick = function(event) {
+        const pdfModal = document.getElementById("pdfModal");
+        const imgModal = document.getElementById("imgModal");
+        if (event.target == pdfModal) closePDF();
+        if (event.target == imgModal) closeModal();
+      }
+      
+      // Add animation to elements when they come into view
+      document.addEventListener('DOMContentLoaded', function() {
+        const animatedElements = document.querySelectorAll('.animated');
+        
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.visibility = 'visible';
+            }
+          });
+        }, { threshold: 0.1 });
+        
+        animatedElements.forEach(el => {
+          el.style.visibility = 'hidden';
+          observer.observe(el);
+        });
+      });
+    </script>
+  </body>
+  </html>

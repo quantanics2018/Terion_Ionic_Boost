@@ -1,0 +1,13 @@
+<h2>Tracking for AWB: {{ awb_code }}</h2>
+
+{% if tracking_data %}
+    <p>Status: {{ tracking_data['data']['tracking_data'][-1]['status'] if tracking_data['data']['tracking_data'] else 'No updates yet' }}</p>
+
+    <ul>
+        {% for update in tracking_data['data']['tracking_data'] %}
+            <li>{{ update['updated_at'] }} - {{ update['status'] }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No tracking information found.</p>
+{% endif %}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order Summary</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f4f4f4; }
+    .box { max-width:600px; margin:40px auto; padding:20px; background:#fff; border-radius:8px; }
+    h2 { color:#28a745; }
+    a { color:#007bff; text-decoration:none; }
+  </style>
+</head>
+<body>
+<div class="box">
+  <h2>Order Placed Successfully ✅</h2>
+  <p><strong>Razorpay Order ID:</strong> {{ order.razorpay_order_id }}</p>
+  <p><strong>Shiprocket Order ID:</strong> {{ order.shiprocket_order_id }}</p>
+  <p><strong>Shipment ID:</strong> {{ order.shipment_id }}</p>
+  <p><strong>Tracking URL:</strong> 
+    {% if order.tracking_url %}
+      <a href="{{ order.tracking_url }}" target="_blank">Track Shipment</a>
+    {% else %}
+      Not available yet
+    {% endif %}
+  </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms and Conditions | Ionic Boost</title>
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+
+</head>
+<body>
+    {% include 'header.html' %}
+
+  <section class="terms-content">
+    <div class="container">
+      
+
+
+      <!-- Return and Refund Policy -->
+      <div class="terms-section">
+        <h2>Return and Refund Policy</h2>
+
+        <h3>1. General</h3>
+        <p>Due to the nature of the product, TIPL does not accept returns or refunds. Only replacements for damaged/defective products are allowed.</p>
+
+        <h3>2. Eligibility for Replacement</h3>
+        <ul>
+          <li>Clear unboxing video evidence is required.</li>
+          <li>Video must show date and time.</li>
+          <li>Video must clearly display the damage/defect.</li>
+        </ul>
+
+        <h3>3. Replacement Process</h3>
+        <p>Upon claim verification, TIPL dispatches a new Ionic Boost 20ml pack within 48 hours at no extra cost.</p>
+
+        <h3>4. Non-Eligibility for Replacement</h3>
+        <ul>
+          <li>Insufficient or no video evidence.</li>
+          <li>Claims made after unreasonable delay.</li>
+          <li>Used or tampered products.</li>
+        </ul>
+
+        <h3>5. Final Sale</h3>
+        <p>All sales are final. Refunds are not issued for change of mind or dissatisfaction. The replacement policy is the only remedy available.</p>
+      </div>
+
+    </div>
+  </section>
+      {% include 'footer.html' %}
+
+</body>
+</html>

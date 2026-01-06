@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - TERiON INNOVIX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+</head>
+<body>
+
+    <!-- Header -->
+    {% include 'header.html' %}
+
+    <!-- About Content -->
+    <section class="about-content">
+        <div class="container">
+            <div class="section-title">
+                <h2>About TERiON INNOVIX</h2>
+                <p>Redefining chemistry for a healthier and more sustainable world</p>
+            </div>
+            
+            <div class="welcome-section">
+                <p>Welcome to TERiON INNOVIX, a trailblazing natural ionic liquids manufacturing company dedicated to redefining chemistry for a healthier and more sustainable world. We are proud to introduce a revolutionary approach to crafting zero chemical ionic liquids, unlocking a new realm of health-benefit products that harness the power of nature.</p>
+                
+                <p>Our journey began with a vision to innovate without compromise – to create solutions that marry cutting-edge science with the purity of natural origins. As pioneers in the field, we have meticulously engineered a diverse range of ionic liquid solutions that are free from man-made chemicals, delivering unparalleled health benefits while minimizing our ecological footprint.</p>
+                
+                <p>At the heart of our ethos lies a commitment to human well-being and environmental stewardship. Our zero chemical ionic liquid formulations are designed to enhance lives by promoting holistic health and vitality. By carefully selecting and harmonizing natural ingredients, we have forged a path to products that embody the essence of nature's healing potential.</p>
+                
+                <p>Every product that bears the TERiON INNOVIX seal is a testament to our unwavering dedication to quality, innovation, and authenticity. With a relentless pursuit of excellence, our research and development team continually strive to push boundaries, ensuring that our health-benefit products remain at the forefront of wellness and sustainable solutions.</p>
+                
+                <p>As advocates of a cleaner, greener future, we take pride in knowing that our efforts extend beyond individual well-being. By choosing TERiON INNOVIX products, you are choosing to support a cause that transcends business – a cause that envisions a harmonious coexistence between human health and the environment.</p>
+                
+                <p>Join us in our mission to rewrite the chemistry narrative and embrace a future where health, nature, and innovation converge. Experience the transformative potential of our zero chemical ionic liquid's health-benefit products and become a part of the movement towards a brighter, more sustainable world.</p>
+                
+                <p class="highlight-text">Discover Nature's Chemistry, Redefined.<br>Discover Terion Innovix</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Mission Vision Section -->
+    <section class="mission-vision-section">
+        <div class="container">
+            <div class="mission-vision">
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>At Terion Innovix, our mission is to pioneer a new era of sustainable chemistry by harnessing the power of nature to create zero chemical ionic liquids. We are committed to revolutionizing industries with our innovative and health-benefitable products, while staying unwaveringly dedicated to environmental responsibility and human well-being. Through cutting-edge research, ethical practices, and a passion for excellence, we aim to empower individuals to lead healthier lives while preserving the planet for future generations.</p>
+                </div>
+                
+                <div class="vision-card">
+                    <div class="vision-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p>Our vision at Terion Innovix is to be a global leader in the natural ionic liquids industry, setting new standards for product innovation, purity, and sustainability. We envision a world where our health-benefit products, derived from renewable sources and devoid of harmful chemicals, become synonymous with holistic well-being. By seamlessly integrating nature and science, we aspire to inspire a shift towards conscious consumer choices, transforming industries and fostering a healthier, more sustainable future for all.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Team</h2>
+                <p>Teamwork makes the dream work</p>
+            </div>
+            
+            <div class="team-cards">
+                <div class="team-card">
+                    <div class="team-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Expert Team</h3>
+                    <p>Our team comprises a diverse group of experts with extensive industrial experience, academic excellence, and a passion for innovation.</p>
+                    
+                    <ul class="team-list">
+                        <li>The team includes the inventor (National Awardee) of Nano Ion Liquid Solutions, who has 34 years of industrial experience, including decades in business, online projects, and research and development in thermodynamics.</li>
+                        <li>A manufacturing expert with an MBA degree brings over five years of experience and co-founded TERiON Innovix.</li>
+                        <li>An advisory member with 44 years of industrial expertise has worked with renowned organizations in thermal and nuclear power plants, AFBC boilers, cogeneration plants, and stack gas pollutant mitigation.</li>
+                    </ul>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Accomplishments</h3>
+                    <p>Our team members have contributed significantly to the industry with numerous achievements:</p>
+                    
+                    <ul class="team-list">
+                        <li>High-value consultancy projects, including roles as an adviser and corporate consultant</li>
+                        <li>Implementation of several innovative schemes</li>
+                        <li>Seven years of research experience and contributions to World Bank projects</li>
+                        <li>National energy conservation awards</li>
+                        <li>Memberships in diverse energy and climate change committees, including BEE, India GHG Programme, and WRI</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    {% include 'footer.html' %}
+
+</body>
+</html>

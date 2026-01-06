@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Profile</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;   /* ✅ Remove default margin */
+      padding: 0;  /* ✅ Remove body padding */
+    }
+
+    .form-container {
+      max-width: 400px;
+      margin: 40px auto;   /* ✅ Center horizontally with spacing from top */
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"], input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #00bfbf;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #009999;
+    }
+  </style>
+</head>
+<body>
+  {% include 'header.html' %}
+
+  <div class="form-container">
+    <h2>Edit Profile</h2>
+    <form action="{{ url_for('edit_profile') }}" method="POST">
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" value="{{ user.email }}" required>
+
+      <label for="address">Address</label>
+      <input type="text" name="address" id="address" value="{{ user.address }}">
+
+      <label for="city">City</label>
+      <input type="text" name="city" id="city" value="{{ user.city }}">
+
+      <label for="state">State</label>
+      <input type="text" name="state" id="state" value="{{ user.state }}">
+      <label for="pincode">Pincode</label>
+      <input type="text" name="pincode" id="pincode" value="{{ user.pincode }}">
+
+
+      <button type="submit">Save Changes</button>
+    </form>
+  </div>
+
+  {% include 'footer.html' %}
+</body>
+</html>

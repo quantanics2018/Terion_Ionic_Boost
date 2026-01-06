@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - TERiON INNOVIX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+</head>
+<body>
+
+    <!-- Header -->
+    {% include 'header.html' %}
+
+    <!-- Contact Content -->
+    <section class="contact-content">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Offices</h2>
+                <p>Visit us at any of our locations for a personalized consultation</p>
+            </div>
+            
+            <div class="offices">
+                <div class="office-card">
+                    <div class="office-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Registered Office</h3>
+                    <p><strong>TERiON INNOVIX PRIVATE LIMITED</strong></p>
+                    <p>340D, Vasantha Nagar,</p>
+                    <p>Backside of Annai Cotton Company,</p>
+                    <p>Aranmanaiputhur,</p>
+                    <p>THENI – 625531.</p>
+                </div>
+                
+                <div class="office-card">
+                    <div class="office-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3>Sales & Marketing Office</h3>
+                    <p><strong>TERiON INNOVIX PRIVATE LIMITED</strong></p>
+                    <p>1st Floor – D Block (Module 115),</p>
+                    <p>TIDEL Park, 4, SH 49A, Tharamani,</p>
+                    <p>Chennai – 600 113.</p>
+                    <p><a href="https://maps.google.com/?q=TIDEL+Park+Tharamani+Chennai" target="_blank">Get Directions</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Info -->
+    <section class="contact-info">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Information</h2>
+                <p>Reach out to us through any of these channels</p>
+            </div>
+            
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Call Us</h3>
+                    <p><a href="tel:+919087399919">+91 90873 99919</a></p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Us</h3>
+                    <p><a href="mailto:info@terioninnovix.in">sales@ionicboost.org</a></p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Business Hours</h3>
+                    <p>Monday - Friday: 9AM - 6PM</p>
+                    <p>Saturday: 10AM - 4PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Find Us</h2>
+                <p>Visit our offices at these locations</p>
+            </div>
+            
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15551.275434600685!2d80.241252!3d12.982713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525d9f3b37cb4f%3A0xea690c1c97e2c5f6!2sTIDEL%20Park!5e0!3m2!1sen!2sin!4v1657881234567!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+    
+    {% include 'footer.html' %}
+
+</body>
+</html>

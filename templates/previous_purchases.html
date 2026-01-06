@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Previous Purchases</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    h2 { margin-bottom: 20px; }
+    ul { list-style: none; padding: 0; }
+    li { padding: 10px; border-bottom: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <h2>Your Previous Purchases</h2>
+  {% if purchases %}
+  <ul>
+    {% for p in purchases %}
+      <li>{{ p.item_name }} ({{ p.purchase_date }})</li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>No purchases yet.</p>
+  {% endif %}
+</body>
+</html>

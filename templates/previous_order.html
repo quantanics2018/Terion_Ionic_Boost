@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Track Orders - Ionic Boost</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f7f7f7; margin:0; padding:0; }
+    .wrap { max-width: 1000px; margin:40px auto; background:#fff; padding:20px; border-radius:8px; box-shadow:0 6px 20px rgba(0,0,0,0.08); }
+    h1 { color:#00bfbf; text-align:center; margin-bottom:20px; }
+    table { width:100%; border-collapse:collapse; }
+    th, td { padding:10px 12px; border-bottom:1px solid #eee; text-align:left; font-size:14px; }
+    th { background:#00bfbf; color:#fff; }
+    tr:hover { background:#f2f8f7; }
+    .small { font-size:12px; color:#666; }
+    .pill { padding:6px 10px; border-radius:14px; font-weight:600; font-size:12px; display:inline-block; }
+    .status-pending { background:#fff3cd; color:#856404; }
+    .status-shipped { background:#d1e7dd; color:#0f5132; }
+    .status-delivered { background:#cfe2ff; color:#084298; }
+    .track-link { color:#0078d4; text-decoration:none; font-weight:600; }
+    .no-orders { text-align:center; padding:30px; color:#666; }
+    .back { display:inline-block; margin-top:18px; background:#00bfbf; color:#fff; padding:8px 14px; border-radius:6px; text-decoration:none; }
+  </style>
+</head>
+<body>
+  {% include 'header.html' %}
+
+  <div class="wrap">
+    <h1>Your Orders</h1>
+
+    {% if orders and orders|length > 0 %}
+      <table>
+        <thead>
+          <tr>
+            <th>DB ID</th>
+            <th>Shiprocket Order</th>
+            <th>AWB / Tracking</th>
+            <th>Courier</th>
+            <th>Buyer</th>
+            <th>Contact</th>
+            <th>Pincode</th>
+            <th>Created</th>
+            <th class="small">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for o in orders %}
+            <tr>
+              <td>{{ o.id }}</td>
+              <td class="small">{{ o.order_id_sr or '-' }}</td>
+              <td>
+                {% if o.awb_code %}
+                  <a class="track-link" target="_blank" href="https://shiprocket.co/tracking/{{ o.awb_code }}">{{ o.awb_code }}</a>
+                {% elif o.tracking_url %}
+                  <a class="track-link" target="_blank" href="{{ o.tracking_url }}">{{ o.tracking_url }}</a>
+                {% else %}
+                  <span class="small">Not available</span>
+                {% endif %}
+              </td>
+              <td>{{ o.courier_name or '-' }}</td>
+              <td>{{ o.name or '-' }}</td>
+              <td>{{ o.whatsapp_number or o.email or '-' }}</td>
+              <td>{{ o.pincode or '-' }}</td>
+              <td>{{ o.created_at_str }}</td>
+              <td class="small">
+                <a class="back" href="{{ url_for('order_success', order_id=o.id) }}">View</a>
+                {% if o.shipment_id %}
+                  <a style="margin-left:6px" class="back" href="{{ url_for('refresh_awb', order_id=o.id) }}">Refresh AWB</a>
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <div class="no-orders">
+        <p>You have not placed any orders yet.</p>
+        <a class="back" href="{{ url_for('purchase')}}">Go to Purchase</a>
+      </div>
+    {% endif %}
+  </div>
+
+  {% include 'footer.html' %}
+</body>
+</html>

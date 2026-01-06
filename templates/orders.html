@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Orders - Ionic Boost</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+    <h2>All Orders</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>City</th>
+                <th>Tracking</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.order_id_sr }}</td>
+                <td>{{ order.name }}</td>
+                <td>{{ order.email }}</tdc>
+                <td>{{ order.whatsapp_number }}</td>
+                <td>{{ order.city }}</td>
+                <td>
+                    {% if order.tracking_url %}
+                        <a href="{{ order.tracking_url }}" target="_blank">Track</a>
+                    {% else %}
+                        <a href="{{ url_for('order_success', order_id=order.id) }}">Track</a>
+                    {% endif %}
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    {% include 'footer.html' %}
+</body>
+</html>
